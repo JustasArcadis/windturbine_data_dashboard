@@ -1,14 +1,7 @@
-from tabnanny import check
 import pandas as pd
 import numpy as np
 import streamlit as st
-import datetime
-import leafmap.kepler as leafmap
-import geopandas
 import pydeck as pdk
-import plotly.express as px
-import pydeck as pdk
-import random
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
