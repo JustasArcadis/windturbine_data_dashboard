@@ -9,8 +9,8 @@ from plotly.subplots import make_subplots
 st.set_page_config(layout="wide")
 
 st.sidebar.title("Please upload csv file before continuing")
-# uploaded_file = st.sidebar.file_uploader('Choose a csv file', type = 'csv', key = 'uploaded_file')
-uploaded_file = 'all_df_v2.csv'
+uploaded_file = st.sidebar.file_uploader('Choose a csv file', type = 'csv', key = 'uploaded_file')
+# uploaded_file = 'all_df_v2.csv'
 if uploaded_file is not None:
      
      all_df = pd.read_csv(uploaded_file)
