@@ -9,8 +9,8 @@ from plotly.subplots import make_subplots
 st.set_page_config(layout="wide")
 
 st.sidebar.title("Please upload csv file before continuing")
-uploaded_file = st.sidebar.file_uploader('Choose a csv file', type = 'csv', key = 'uploaded_file')
-# uploaded_file = 'all_df_v2.csv'
+# uploaded_file = st.sidebar.file_uploader('Choose a csv file', type = 'csv', key = 'uploaded_file')
+uploaded_file = 'all_df_v2.csv'
 if uploaded_file is not None:
      
      all_df = pd.read_csv(uploaded_file)
@@ -176,11 +176,41 @@ if uploaded_file is not None:
      layer = pdk.Layer(
      "GridLayer", map_df, pickable=True, extruded=True, cell_size=80, elevation_scale=3, get_position="COORDINATES",
      )
+     
+     
+     ICON_URL = 'data:image/png;base64,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'
+
+
+     icon_data = {
+     # Icon from Wikimedia, used the Creative Commons Attribution-Share Alike 3.0
+     # Unported, 2.5 Generic, 2.0 Generic and 1.0 Generic licenses
+     "url": ICON_URL,
+     "width": 342,
+     "height": 1542,
+     "anchorY": 742,
+     }
+
+     data = pd.read_csv('eeker_gps.csv')
+     data["icon_data"] = None
+     for i in data.index:
+          data["icon_data"][i] = icon_data
+
+
+     icon_layer = pdk.Layer(
+     type="IconLayer",
+     data=data,
+     get_icon="icon_data",
+     get_size=4,
+     size_scale=15,
+     get_position=["Longitude", "Latitude"],
+     pickable=True,
+     )
 
 
 
      view_state = pdk.ViewState(latitude=avg_lat, longitude=avg_lon, zoom=11, bearing=0, pitch=45)
-     r = pdk.Deck(layers=[layer], initial_view_state=view_state, tooltip= {"text": "{position}\nCount: {count}\nFeedback: {Feedback}"}, map_style=pdk.map_styles.ROAD)
+     
+     r = pdk.Deck(layers=[layer, icon_layer], initial_view_state=view_state, tooltip= {"text": "{position}\nCount: {count}\nFeedback: {Feedback}"}, map_style=pdk.map_styles.ROAD)
      map = st.pydeck_chart(pydeck_obj=r, use_container_width=False)
      
 
